@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+
 @Repository
 public class UserRepository {
     private final ConcurrentHashMap<User, List<Authorities>> users;
@@ -18,7 +19,7 @@ public class UserRepository {
         users.put(new User("Martin", "3456"), List.of(Authorities.READ));
     }
 
-    public List<Authorities> getUserAuthorities(String user, String password) {
-        return users.get(new User(user, password));
+    public List<Authorities> getUserAuthorities(User user) {
+        return users.get(user);
     }
 }
